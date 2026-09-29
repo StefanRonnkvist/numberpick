@@ -1,0 +1,40 @@
+Build arithmetic fluency one equation at a time with Number Pick. Solve a problem, find its result on the number board, and drag the tile onto the equation. Correct answers bring up fresh problems immediately, while clear feedback helps you spot and retry mistakes.
+
+Choose the math you want to practice:
+- Addition
+- Subtraction
+- Multiplication
+- Division
+- Any combination of the four operations
+- Complex mode for longer parenthesized expressions with whole-number results
+
+Set the right level of challenge:
+- Set minimum and maximum operand values
+- Choose how many equations appear at once
+- Choose how many result tiles are shown
+- Switch between Standard and Complex equations
+- Choose System, Dark, or Light appearance
+
+Learn at your own pace:
+- Tap an equation for a brief answer reveal without changing your score
+- See immediate green or red feedback after every drop
+- Retry equations after an incorrect answer
+- Keep practicing as solved equations are replaced automatically
+
+Track progress clearly:
+- Correct and incorrect counts per operation
+- Totals and accuracy percentage at a glance
+- Letter-grade feedback for quick progress checks
+- Separate tracking for Complex mode
+- A confirmation step before resetting scores
+
+Designed for different screens:
+- Responsive phone, tablet, and desktop layouts
+- Scrollable number board when a smaller screen cannot show every tile
+- Adjustable equation and tile counts for quick drills or longer sessions
+
+Scores and game settings are stored locally on your device, so your practice setup is ready when you return. Core gameplay works offline.
+
+Need help? The built-in Help tab explains the controls, modes, scoring, and settings. The Information tab lets you contact support and review submissions associated with the app. Sending a support question requires an internet connection and includes the details entered in the form along with the displayed app and device-layout diagnostics.
+
+Number Pick is suited to students, families, teachers, and anyone who wants focused mental-math practice without a complicated setup.
