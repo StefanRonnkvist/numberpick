@@ -1,4 +1,4 @@
-Build arithmetic fluency one equation at a time with Number Pick. Solve a problem, find its result on the number board, and drag the tile onto the equation. Correct answers bring up fresh problems immediately, while clear feedback helps you spot and retry mistakes.
+Build arithmetic fluency one equation at a time with Number Pick. Solve a problem, then drag its matching number tile onto the equation. Correct answers flash green and replace the problem; incorrect answers flash red and let you try again. Tap an equation to reveal its answer for about two seconds without affecting your score.
 
 Choose the math you want to practice:
 - Addition
@@ -6,35 +6,35 @@ Choose the math you want to practice:
 - Multiplication
 - Division
 - Any combination of the four operations
-- Complex mode for longer parenthesized expressions with whole-number results
+- Complex mode for longer parenthesized expressions with whole-number results and a separate score
 
 Set the right level of challenge:
 - Set minimum and maximum operand values
 - Choose how many equations appear at once
-- Choose how many result tiles are shown
+- Choose how many answer tiles are shown; the board requires at least three tiles per equation
 - Switch between Standard and Complex equations
-- Choose System, Dark, or Light appearance
+- Choose System, Dark, or Light appearance for the current session
 
 Learn at your own pace:
-- Tap an equation for a brief answer reveal without changing your score
-- See immediate green or red feedback after every drop
+- Tap an equation to reveal its answer briefly without changing your score
+- See green feedback for correct answers and red feedback for incorrect answers
 - Retry equations after an incorrect answer
-- Keep practicing as solved equations are replaced automatically
+- Get a fresh equation and refreshed answer tile after a correct answer
 
 Track progress clearly:
-- Correct and incorrect counts per operation
-- Totals and accuracy percentage at a glance
-- Letter-grade feedback for quick progress checks
+- Correct, incorrect, and total counts per active operation
+- Rounded accuracy percentage at a glance
+- Letter grades from 70% accuracy (C), 80% (B), and 90% (A)
 - Separate tracking for Complex mode
-- A confirmation step before resetting scores
+- Reset all scores after a confirmation; your settings are kept
 
 Designed for different screens:
 - Responsive phone, tablet, and desktop layouts
 - Scrollable number board when a smaller screen cannot show every tile
 - Adjustable equation and tile counts for quick drills or longer sessions
 
-Scores and game settings are stored locally on your device, so your practice setup is ready when you return. Core gameplay works offline.
+Scores and game settings are stored locally on your device, so your practice setup is ready when you return. Theme selection lasts for the current session. Core gameplay works offline.
 
-Need help? The built-in Help tab explains the controls, modes, scoring, and settings. The Information tab lets you contact support and review submissions associated with the app. Sending a support question requires an internet connection and includes the details entered in the form along with the displayed app and device-layout diagnostics.
+Need help? The built-in Help tab explains the controls, practice settings, score grades, and support options. The Information tab lets you contact support or review submissions associated with the app. Sending a support question requires an internet connection and includes the name, email, and message you provide, plus detected app version, package name, platform, screen orientation, and layout details. Loading submissions also requires an internet connection.
 
 Number Pick is suited to students, families, teachers, and anyone who wants focused mental-math practice without a complicated setup.

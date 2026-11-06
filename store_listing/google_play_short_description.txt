@@ -1,1 +1,1 @@
-Practice math with draggable answers, custom difficulty, and score tracking.
+Drag answers to equations, choose math modes, and track your progress.

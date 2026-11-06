@@ -7,7 +7,7 @@
       "dependsOn": [
         "Pub Update All",
         "Flutter: Version Bump",
-        "Build All Release Targets",
+        "Build All Release Targets"
       ],
       "group": "build",
       "problemMatcher": []
@@ -19,7 +19,7 @@
         "flutter: pub upgrade",
         "Flutter: Pub Upgrade Major Versions",
         "Flutter: Pub Outdated",
-        "Flutter: Pub Get",
+        "Flutter: Pub Get"
       ],
       "group": "build",
       "problemMatcher": []
@@ -88,7 +88,7 @@
       "type": "shell",
       "command": "pwsh",
       "dependsOn": [
-      "Flutter: Fix Apple Ephemeral Packages",
+        "Flutter: Fix Apple Ephemeral Packages"
       ],
       "args": [
         "-NoProfile",
@@ -108,7 +108,7 @@
       "type": "shell",
       "command": "flutter build apk --release",
       "dependsOn": [
-      "Flutter: Fix Apple Ephemeral Packages",
+        "Flutter: Fix Apple Ephemeral Packages"
       ],
       "group": "build",
       "presentation": {
@@ -198,5 +198,44 @@
       "group": "build",
       "problemMatcher": []
     },
+    {
+      "label": "Docs: Audit Store Listing, Help and README",
+      "detail": "Checks that store_listing/, the Help tab and README.md describe the app it ships from.",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/audit-docs.ps1"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Git: Commit and Push All",
+      "type": "shell",
+      "command": "pwsh",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/git-commit-push.ps1",
+        "-Message",
+        "Update project"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
   ]
 }

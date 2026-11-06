@@ -4,41 +4,42 @@ Number Pick is a Flutter arithmetic practice game built around a simple drag-and
 
 ## Gameplay
 
-- Drag a numbered tile onto the equation it solves.
-- Correct drops turn green, increase the correct count, and replace the equation.
-- Incorrect drops turn red, increase the incorrect count, and leave the equation available for another attempt.
-- Tap an equation to reveal its answer briefly without changing the score.
-- Practice Addition, Subtraction, Multiplication, Division, or any enabled combination.
-- Enable Complex mode for longer parenthesized expressions with whole-number results.
+- Drag a numbered tile onto the equation it solves. Every visible equation has a matching answer tile on the board.
+- Correct drops flash green, increase the correct count, and replace the equation and its answer tile.
+- Incorrect drops flash red, increase the incorrect count, and leave the equation available for another attempt.
+- Tap an equation to reveal its answer for about two seconds without changing the score.
+- Practice Addition, Subtraction, Multiplication, Division, or any enabled combination. Division problems have whole-number answers.
+- Enable Complex mode for longer parenthesized expressions with whole-number results; Complex scores are tracked separately.
 
-New players are initially directed to the Help tab. The interface adapts across phone, tablet, and desktop widths, and the number board supports scrolling when all tiles cannot fit at once.
+New players with no recorded attempts are initially directed to the Help tab. The interface adapts across phone, tablet, and desktop widths, and the number board supports scrolling when all tiles cannot fit at once.
 
 ## Practice settings
 
 - Set the minimum and maximum operand values.
-- Choose how many equations and number tiles are displayed.
+- Choose how many equations and number tiles are displayed. There must be at least three answer tiles per equation.
 - Enable individual arithmetic operations; at least one always remains active.
 - Switch between Standard and Complex equations.
-- Choose the System, Dark, or Light appearance.
-- Reset score counters after a confirmation prompt.
+- Choose the System, Dark, or Light appearance. The appearance choice applies for the current session.
+- Reset all score counters after a confirmation prompt without changing game settings.
 
 The visible equation count can be reduced when the available screen height cannot accommodate the requested amount.
 
 ## Progress and storage
 
-- Correct, incorrect, total, accuracy percentage, and letter-grade feedback are shown per active operation.
-- Complex-mode attempts are tracked separately.
+- Correct, incorrect, and total attempts, plus rounded accuracy, are shown per active operation.
+- Letter grades begin at 70% accuracy: C at 70%, B at 80%, and A at 90%; lower scores have no letter grade.
+- Complex-mode attempts are tracked separately from standard operations.
 - Scores and game settings are stored locally with SharedPreferences and restored on the next launch.
-- Theme selection applies during the current app session.
+- Theme selection applies during the current app session and is not persisted.
 
 ## Help and support
 
 The in-app Help tab covers gameplay, difficulty, scoring, and support. The Information tab contains:
 
-- **Contact:** sends the entered name, email address, and question to the configured support endpoint. The form also includes the displayed app/package version, platform, orientation, and layout diagnostics.
+- **Contact:** sends the entered name, email address, and question to the configured support endpoint, together with detected app version, package name, platform, screen orientation, and layout details.
 - **Submissions:** retrieves and displays support submissions associated with this app's package name.
 
-Gameplay does not require a network connection. Contact and submission history do.
+Gameplay does not require a network connection. Sending a contact request and loading submissions do.
 
 ## Project layout
 
