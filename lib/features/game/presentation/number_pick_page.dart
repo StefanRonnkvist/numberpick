@@ -1195,7 +1195,7 @@ class _NumberPickPageState extends State<NumberPickPage>
               ),
               const SizedBox(height: 8),
               const Text(
-                'Build arithmetic fluency one equation at a time. Work out the answer, then match it to a number tile. Every visible equation has its answer on the board.',
+                'Build arithmetic fluency one equation at a time. Work out the answer, then match it to a number tile. Every visible equation has its answer on the board. On a first launch with no recorded attempts, Number Pick opens this Help tab first.',
                 style: TextStyle(color: Colors.white70, height: 1.5),
               ),
               const SizedBox(height: 16),
@@ -1216,7 +1216,7 @@ class _NumberPickPageState extends State<NumberPickPage>
                   'The number range controls the operands used to build problems. Division problems have whole-number answers.',
                   'Choose the number of equations and answer tiles. The board needs at least three tiles per equation, and available screen space can limit the number of equations shown.',
                   'Standard mode uses one operation in each equation. Complex mode combines operations in parenthesized expressions; each problem has a whole-number answer.',
-                  'Choose System, Dark, or Light from the appearance menu. Settings and scores are saved on this device.',
+                  'Choose System, Dark, or Light from the appearance menu. Your practice settings and scores are saved on this device; the appearance choice lasts only for the current session.',
                 ],
               ),
               const SizedBox(height: 16),
@@ -1233,9 +1233,9 @@ class _NumberPickPageState extends State<NumberPickPage>
               _buildHelpSection(
                 title: 'Help and support',
                 bullets: [
-                  'Use Information > Contact to send a question, or Information > Submissions to view entries associated with this app.',
-                  'The contact form sends the name, email, and message you provide, along with the detected app version, package name, platform, screen orientation, and layout details.',
-                  'Gameplay works offline. Sending a contact request and loading submissions need an internet connection.',
+                  'Information contains Contact and Submissions. Contact sends your name, return email, and question; Submissions downloads the submissions CSV and shows rows matching this app package.',
+                  'A submitted contact request also includes detected app version and build, package name, platform, screen orientation, and layout size category.',
+                  'Gameplay works offline. Sending a contact request and loading submissions need an internet connection; contact details and diagnostics are sent when you submit the form.',
                 ],
               ),
             ],

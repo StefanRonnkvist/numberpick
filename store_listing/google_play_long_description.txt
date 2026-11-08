@@ -13,7 +13,7 @@ Set the right level of challenge:
 - Choose how many equations appear at once
 - Choose how many answer tiles are shown; the board requires at least three tiles per equation
 - Switch between Standard and Complex equations
-- Choose System, Dark, or Light appearance for the current session
+- Choose System, Dark, or Light appearance for the current session; this choice is not saved
 
 Learn at your own pace:
 - Tap an equation to reveal its answer briefly without changing your score
@@ -33,8 +33,8 @@ Designed for different screens:
 - Scrollable number board when a smaller screen cannot show every tile
 - Adjustable equation and tile counts for quick drills or longer sessions
 
-Scores and game settings are stored locally on your device, so your practice setup is ready when you return. Theme selection lasts for the current session. Core gameplay works offline.
+Scores and practice settings are saved locally on your device and restored when you return. Theme selection lasts only for the current session. Gameplay works offline.
 
-Need help? The built-in Help tab explains the controls, practice settings, score grades, and support options. The Information tab lets you contact support or review submissions associated with the app. Sending a support question requires an internet connection and includes the name, email, and message you provide, plus detected app version, package name, platform, screen orientation, and layout details. Loading submissions also requires an internet connection.
+The app includes Game, Setting, Help, and Information sections. Help explains the controls, practice settings, score grades, and support options. Under Information, Contact sends the name, return email, and question you provide, plus detected app version and build, package name, platform, screen orientation, and layout size category. Submissions downloads a CSV and displays only entries matching the app's package name. Contacting support and loading submissions require an internet connection; contact details and diagnostics are sent when you submit the form.
 
 Number Pick is suited to students, families, teachers, and anyone who wants focused mental-math practice without a complicated setup.

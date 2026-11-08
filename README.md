@@ -1,52 +1,54 @@
 # Number Pick
 
-Number Pick is a Flutter arithmetic practice game built around a simple drag-and-drop loop: solve an equation, find its result on the number board, and drag that tile onto the equation. Correct answers produce a new problem immediately, making the app useful for short practice sessions or longer drills.
+Number Pick is an arithmetic practice game built around a drag-and-drop loop: solve an equation, find its result among the number tiles, and drag that tile onto the equation. Correct answers replace the problem, so you can keep practicing without restarting a round.
 
-## Gameplay
+Current app version: `0.1.46+47` (from `pubspec.yaml`).
 
-- Drag a numbered tile onto the equation it solves. Every visible equation has a matching answer tile on the board.
-- Correct drops flash green, increase the correct count, and replace the equation and its answer tile.
-- Incorrect drops flash red, increase the incorrect count, and leave the equation available for another attempt.
-- Tap an equation to reveal its answer for about two seconds without changing the score.
-- Practice Addition, Subtraction, Multiplication, Division, or any enabled combination. Division problems have whole-number answers.
-- Enable Complex mode for longer parenthesized expressions with whole-number results; Complex scores are tracked separately.
+## How to play
 
-New players with no recorded attempts are initially directed to the Help tab. The interface adapts across phone, tablet, and desktop widths, and the number board supports scrolling when all tiles cannot fit at once.
+- Drag a number tile onto the equation it solves. Every displayed equation has a matching answer tile.
+- A correct drop flashes green, counts as a correct attempt, and replaces the equation and its answer tile.
+- An incorrect drop flashes red and counts as an incorrect attempt; the equation remains for another try.
+- Tap an equation to reveal its answer for about two seconds. Revealing an answer does not change your score.
+- Practice addition, subtraction, multiplication, division, or a mix of the four. Division problems use whole-number answers.
+- Turn on Complex for parenthesized expressions that combine operations. These attempts are scored separately from standard operation practice.
+
+The app has four main sections: **Game**, **Setting**, **Help**, and **Information**. First-time players with no recorded attempts are initially shown Help. The layout changes for phone, tablet, and desktop widths; the tile board scrolls when needed.
 
 ## Practice settings
 
-- Set the minimum and maximum operand values.
-- Choose how many equations and number tiles are displayed. There must be at least three answer tiles per equation.
-- Enable individual arithmetic operations; at least one always remains active.
-- Switch between Standard and Complex equations.
-- Choose the System, Dark, or Light appearance. The appearance choice applies for the current session.
-- Reset all score counters after a confirmation prompt without changing game settings.
+- Set the minimum and maximum operand values (from 0 to 999).
+- Choose the number of displayed equations and number tiles. The tile count is at least three per equation and can be set up to 48.
+- Enable one or more standard operations; at least one operation must remain enabled. Enabling Complex selects all four operations for use in its expressions.
+- Switch between Standard and Complex practice.
+- Choose System, Dark, or Light appearance. This choice lasts for the current app session.
+- Reset score counters after confirming. Resetting scores keeps your practice settings.
 
-The visible equation count can be reduced when the available screen height cannot accommodate the requested amount.
+The equation count is limited by available screen height, so fewer equations may be shown than the selected count when space is tight.
 
-## Progress and storage
+## Scores and saved data
 
-- Correct, incorrect, and total attempts, plus rounded accuracy, are shown per active operation.
-- Letter grades begin at 70% accuracy: C at 70%, B at 80%, and A at 90%; lower scores have no letter grade.
-- Complex-mode attempts are tracked separately from standard operations.
-- Scores and game settings are stored locally with SharedPreferences and restored on the next launch.
+- Score cards show correct, incorrect, and total attempts, plus accuracy rounded to a whole percent for each active operation.
+- Grades use accuracy thresholds: C from 70%, B from 80%, and A from 90%. There is no letter grade below 70%.
+- Complex-mode attempts have a separate score.
+- Scores and practice settings are saved locally with SharedPreferences and restored on the next launch.
 - Theme selection applies during the current app session and is not persisted.
 
-## Help and support
+## Help, contact, and submissions
 
-The in-app Help tab covers gameplay, difficulty, scoring, and support. The Information tab contains:
+The in-app **Help** section explains controls, practice settings, scores, and support. **Information** contains two sections:
 
-- **Contact:** sends the entered name, email address, and question to the configured support endpoint, together with detected app version, package name, platform, screen orientation, and layout details.
-- **Submissions:** retrieves and displays support submissions associated with this app's package name.
+- **Contact** sends the name, return email, and question you enter to the configured support service. The request also includes detected app version and build, package name, platform, screen orientation, and layout size category.
+- **Submissions** downloads the submissions CSV and displays only rows matching this app's package name.
 
-Gameplay does not require a network connection. Sending a contact request and loading submissions do.
+Gameplay works offline. Contacting support and loading submissions require an internet connection. Contact details and diagnostic metadata are sent only when you submit the form.
 
 ## Project layout
 
 - `lib/app`: application shell, themes, and splash transition
 - `lib/features/game`: game models, persistence, generation, scoring, and UI
 - `lib/contact`: contact form and submissions viewer
-- `store_listing`: Google Play short and long descriptions
+- `store_listing/google_play_short_description.txt` and `store_listing/google_play_long_description.txt`: Google Play listing copy
 - `scripts` and `tool`: release and maintenance PowerShell scripts
 
 ## Tech stack
@@ -55,6 +57,7 @@ Gameplay does not require a network connection. Sending a contact request and lo
 - `shared_preferences` for local scores and settings
 - `http` for contact and submission requests
 - `package_info_plus` for application metadata
+
 
 ## Supported targets
 
@@ -74,13 +77,4 @@ flutter analyze
 
 ## Release builds
 
-The workspace provides these VS Code build tasks:
-
-- `Build Release APK`
-- `Build Release App Bundle`
-- `Build Release Web`
-- `Build Release Windows`
-- `Build Release MSIX`
-- `Build All Release Targets`
-
-The all-target task performs the version bump and runs the configured release builds in sequence. Platform SDKs, signing configuration, and packaging prerequisites must be installed before running the corresponding target.
+Available VS Code tasks include `Build Release APK`, `Build Release App Bundle`, `Build Release Web`, `Build Release Windows`, `Build Release MSIX`, and `Build All Release Targets`. The all-target task bumps the version and runs its configured release builds in sequence. Install the relevant platform SDKs and configure signing and packaging prerequisites before building.
