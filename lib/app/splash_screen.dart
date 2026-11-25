@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Plays the startup animation and reports when the app can show its content.
 class SplashScreen extends StatefulWidget {

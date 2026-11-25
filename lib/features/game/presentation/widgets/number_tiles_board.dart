@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:numberpick/features/game/domain/models.dart';
 
 /// Measurements used to size and scroll the number-tile grid.

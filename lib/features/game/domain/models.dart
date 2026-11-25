@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:numberpick/features/game/domain/operation.dart';
 
 /// An equation shown to the player and its expected integer answer.

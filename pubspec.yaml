@@ -1,7 +1,7 @@
 name: numberpick
 description: "A new Flutter project."
 publish_to: 'none'
-version: 0.1.46+47
+version: 0.1.51+52
 
 environment:
   sdk: ^3.12.1
@@ -13,6 +13,7 @@ dependencies:
   package_info_plus: ^10.2.1
   shared_preferences: ^2.5.3
 
+  material_ui: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -20,7 +21,7 @@ dev_dependencies:
   msix: ^3.16.13
 
 msix_config:
-  msix_version: 0.1.46.47
+  msix_version: 0.1.51.52
 
 flutter:
   uses-material-design: true

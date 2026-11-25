@@ -1,4 +1,4 @@
-Build arithmetic fluency one equation at a time with Number Pick. Solve a problem, then drag its matching number tile onto the equation. Correct answers flash green and replace the problem; incorrect answers flash red and let you try again. Tap an equation to reveal its answer for about two seconds without affecting your score.
+Build arithmetic fluency one equation at a time with Number Pick. Solve each problem, then drag its matching number tile onto the equation. Correct answers flash green and bring a fresh problem; incorrect answers flash red so you can try again. Tap an equation to reveal its answer for about two seconds without affecting your score.
 
 Choose the math you want to practice:
 - Addition
@@ -6,35 +6,31 @@ Choose the math you want to practice:
 - Multiplication
 - Division
 - Any combination of the four operations
-- Complex mode for longer parenthesized expressions with whole-number results and a separate score
-
+- Complex mode for parenthesized expressions that combine operations, with whole-number results and a separate score
 Set the right level of challenge:
-- Set minimum and maximum operand values
-- Choose how many equations appear at once
-- Choose how many answer tiles are shown; the board requires at least three tiles per equation
-- Switch between Standard and Complex equations
+- Set minimum and maximum operand values, from 0 to 999
+- Choose how many equations appear at once; available screen height can limit the number shown
+- Choose how many answer tiles are shown; the board requires at least three tiles per equation and scrolls when needed
+- Switch between Standard and Complex equations; Complex mode automatically enables all four operations
 - Choose System, Dark, or Light appearance for the current session; this choice is not saved
-
 Learn at your own pace:
 - Tap an equation to reveal its answer briefly without changing your score
 - See green feedback for correct answers and red feedback for incorrect answers
 - Retry equations after an incorrect answer
 - Get a fresh equation and refreshed answer tile after a correct answer
-
 Track progress clearly:
-- Correct, incorrect, and total counts per active operation
+- Correct, incorrect, and total counts per operation shown
 - Rounded accuracy percentage at a glance
 - Letter grades from 70% accuracy (C), 80% (B), and 90% (A)
 - Separate tracking for Complex mode
 - Reset all scores after a confirmation; your settings are kept
-
+- Confetti when you reach 90% overall accuracy after at least 100 attempts
 Designed for different screens:
 - Responsive phone, tablet, and desktop layouts
 - Scrollable number board when a smaller screen cannot show every tile
 - Adjustable equation and tile counts for quick drills or longer sessions
-
 Scores and practice settings are saved locally on your device and restored when you return. Theme selection lasts only for the current session. Gameplay works offline.
 
-The app includes Game, Setting, Help, and Information sections. Help explains the controls, practice settings, score grades, and support options. Under Information, Contact sends the name, return email, and question you provide, plus detected app version and build, package name, platform, screen orientation, and layout size category. Submissions downloads a CSV and displays only entries matching the app's package name. Contacting support and loading submissions require an internet connection; contact details and diagnostics are sent when you submit the form.
+The app includes Game, Setting, Help, and Information sections. New players with no recorded attempts are shown Help first. Help explains the controls, practice settings, score grades, and support options. Under Information, Contact sends the name, return email, and question you provide, plus detected app version and build, package name, platform, screen orientation, and layout size category. Submissions downloads a CSV and displays only entries matching the app's package name. Contacting support and loading submissions require an internet connection; contact details and diagnostics are sent when you submit the form.
 
 Number Pick is suited to students, families, teachers, and anyone who wants focused mental-math practice without a complicated setup.

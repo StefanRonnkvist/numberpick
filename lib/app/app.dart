@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:numberpick/app/splash_screen.dart';
 import 'package:numberpick/features/game/presentation/number_pick_page.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:numberpick/contact/contact_page.dart';
 import 'package:numberpick/contact/submissions_csv_page.dart';
 import 'package:numberpick/features/game/data/score_storage.dart';
@@ -15,6 +15,8 @@ enum _EquationFeedback { correct, incorrect }
 
 /// Selects either one-operation equations or grouped multi-operation equations.
 enum GameMode { standard, complex }
+
+
 
 class _SpeechBubbleTailPainter extends CustomPainter {
   _SpeechBubbleTailPainter({required this.color});
@@ -202,8 +204,74 @@ String _formatComplexOperand(
   }
 }
 
+class _ConfettiParticle {
+  const _ConfettiParticle({
+    required this.horizontalVelocity,
+    required this.initialVerticalVelocity,
+    required this.gravity,
+    required this.size,
+    required this.rotation,
+    required this.spin,
+    required this.color,
+  });
+
+  final double horizontalVelocity;
+  final double initialVerticalVelocity;
+  final double gravity;
+  final double size;
+  final double rotation;
+  final double spin;
+  final Color color;
+}
+
+class _CannonConfettiPainter extends CustomPainter {
+  const _CannonConfettiPainter({
+    required this.progress,
+    required this.particles,
+  });
+
+  final double progress;
+  final List<_ConfettiParticle> particles;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    const double flightDuration = 2.5;
+    final double elapsed = progress * flightDuration;
+    final Offset cannonMouth = Offset(size.width / 2, size.height * 0.86);
+    final double opacity = (1 - (progress * 0.35)).clamp(0.0, 1.0);
+
+    for (final _ConfettiParticle particle in particles) {
+      final double x = cannonMouth.dx + particle.horizontalVelocity * elapsed;
+      final double y =
+          cannonMouth.dy +
+          particle.initialVerticalVelocity * elapsed +
+          0.5 * particle.gravity * elapsed * elapsed;
+      final Paint paint = Paint()
+        ..color = particle.color.withAlpha((255 * opacity).round());
+      canvas.save();
+      canvas.translate(x, y);
+      canvas.rotate(particle.rotation + particle.spin * elapsed);
+      canvas.drawRect(
+        Rect.fromCenter(
+          center: Offset.zero,
+          width: particle.size,
+          height: particle.size * 0.58,
+        ),
+        paint,
+      );
+      canvas.restore();
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _CannonConfettiPainter oldDelegate) {
+    return oldDelegate.progress != progress ||
+        oldDelegate.particles != particles;
+  }
+}
+
 class _NumberPickPageState extends State<NumberPickPage>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   static const int _gameTabIndex = 0;
   static const int _helpTabIndex = 2;
   static const int _problemCount = 12;
@@ -251,6 +319,8 @@ class _NumberPickPageState extends State<NumberPickPage>
   final Set<int> _lockedTileIds = <int>{};
   OverlayEntry? _equationAnswerOverlay;
   Timer? _equationAnswerTimer;
+  OverlayEntry? _cannonConfettiOverlay;
+  late final AnimationController _confettiController;
 
   int _nextProblemId = 1;
   int _nextTileId = 1;
@@ -261,6 +331,14 @@ class _NumberPickPageState extends State<NumberPickPage>
   int get _operandMin => _operandRange.start.round();
   int get _operandMax => _operandRange.end.round();
   int get _minimumSquareCount => _equationCount * 3;
+
+  int get _totalCorrectAnswers =>
+      _correctByOperation.values.fold(0, (total, score) => total + score);
+  int get _totalAnswered =>
+      _totalCorrectAnswers +
+      _incorrectByOperation.values.fold(0, (total, score) => total + score);
+  double get _accuracy =>
+      _totalAnswered == 0 ? 0 : _totalCorrectAnswers / _totalAnswered;
 
   List<Operation> get _enabledOperations {
     final List<Operation> result = <Operation>[];
@@ -297,6 +375,10 @@ class _NumberPickPageState extends State<NumberPickPage>
   void initState() {
     super.initState();
     _tabController = TabController(length: 4, vsync: this);
+    _confettiController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2500),
+    )..addStatusListener(_onConfettiAnimationStatus);
     _tabController.addListener(_onTabChanged);
     _rebuildAll();
     _loadScores();
@@ -305,6 +387,10 @@ class _NumberPickPageState extends State<NumberPickPage>
   @override
   void dispose() {
     _dismissEquationAnswerBubble();
+    _dismissCannonConfetti();
+    _confettiController
+      ..removeStatusListener(_onConfettiAnimationStatus)
+      ..dispose();
     _clearAllFeedback();
     _tabController.removeListener(_onTabChanged);
     _tabController.dispose();
@@ -312,6 +398,12 @@ class _NumberPickPageState extends State<NumberPickPage>
   }
 
   void _onTabChanged() => setState(() {});
+
+  void _onConfettiAnimationStatus(AnimationStatus status) {
+    if (status == AnimationStatus.completed) {
+      _dismissCannonConfetti();
+    }
+  }
 
   /// Regenerates the problem set and all answer tiles after settings change.
   void _rebuildAll() {
@@ -768,6 +860,56 @@ class _NumberPickPageState extends State<NumberPickPage>
     });
   }
 
+
+
+  void _dismissCannonConfetti() {
+    _cannonConfettiOverlay?.remove();
+    _cannonConfettiOverlay = null;
+  }
+
+  /// Fires a burst from the bottom of the screen; gravity carries it back down.
+  void _showCannonConfetti() {
+    _dismissCannonConfetti();
+    final List<_ConfettiParticle> particles = List<_ConfettiParticle>.generate(
+      90,
+      (_) => _ConfettiParticle(
+        horizontalVelocity: _random.nextDouble() * 560 - 280,
+        initialVerticalVelocity: -(600 + _random.nextDouble() * 420),
+        gravity: 360 + _random.nextDouble() * 260,
+        size: 5 + _random.nextDouble() * 8,
+        rotation: _random.nextDouble() * pi,
+        spin: _random.nextDouble() * 12 - 6,
+        color: <Color>[
+          const Color(0xFFFF4D6D),
+          const Color(0xFFFFC857),
+          const Color(0xFF4D96FF),
+          const Color(0xFF6BCB77),
+          const Color(0xFFB084F5),
+        ][_random.nextInt(5)],
+      ),
+    );
+    final OverlayEntry entry = OverlayEntry(
+      builder: (_) => Positioned.fill(
+        child: IgnorePointer(
+          child: AnimatedBuilder(
+            animation: _confettiController,
+            builder: (context, child) => CustomPaint(
+              painter: _CannonConfettiPainter(
+                progress: _confettiController.value,
+                particles: particles,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    Overlay.of(context).insert(entry);
+    _cannonConfettiOverlay = entry;
+    _confettiController.forward(from: 0);
+  }
+
+
+
   NumberTile _buildNumberTile(
     int index,
     int minResult,
@@ -826,11 +968,17 @@ class _NumberPickPageState extends State<NumberPickPage>
         currentProblem.operation == Operation.complex
         ? Operation.complex
         : currentProblem.operation;
+    final double accuracyBeforeAnswer = _accuracy;
 
     setState(() {
       if (isCorrect) {
         _correctByOperation[scoreOperation] =
             (_correctByOperation[scoreOperation] ?? 0) + 1;
+        if (_totalAnswered >= 100 &&
+            accuracyBeforeAnswer < 0.9 &&
+            _accuracy >= 0.9) {
+          _showCannonConfetti();
+        }
       } else {
         _incorrectByOperation[scoreOperation] =
             (_incorrectByOperation[scoreOperation] ?? 0) + 1;
@@ -1212,20 +1360,21 @@ class _NumberPickPageState extends State<NumberPickPage>
               _buildHelpSection(
                 title: 'Adjust your practice',
                 bullets: [
-                  'Open Setting to choose Addition, Subtraction, Multiplication, Division, or a mix. At least one operation remains enabled.',
+                  'Open Setting to choose Addition, Subtraction, Multiplication, Division, or a mix. At least one operation remains enabled. Turning on Complex selects all four operations for its expressions.',
                   'The number range controls the operands used to build problems. Division problems have whole-number answers.',
-                  'Choose the number of equations and answer tiles. The board needs at least three tiles per equation, and available screen space can limit the number of equations shown.',
-                  'Standard mode uses one operation in each equation. Complex mode combines operations in parenthesized expressions; each problem has a whole-number answer.',
-                  'Choose System, Dark, or Light from the appearance menu. Your practice settings and scores are saved on this device; the appearance choice lasts only for the current session.',
+                  'Choose the number of equations and answer tiles. The board needs at least three tiles per equation and scrolls when needed; available screen height can limit how many equations are shown.',
+                  'Standard mode uses one selected operation in each equation. Complex mode combines operations in parenthesized expressions; each problem has a whole-number answer.',
+                  'Choose System, Dark, or Light under Mode in Setting. Your practice settings and scores are saved on this device; the appearance choice lasts only for the current session.',
                 ],
               ),
               const SizedBox(height: 16),
               _buildHelpSection(
                 title: 'Understand your scores',
                 bullets: [
-                  'Score cards show correct, incorrect, and total attempts, plus rounded accuracy for each enabled operation.',
+                  'Score cards show correct, incorrect, and total attempts, plus accuracy rounded to a whole percent for each operation shown.',
                   'A grade appears at 70% accuracy: C from 70%, B from 80%, and A from 90%. Lower percentages have no letter grade.',
                   'Complex-mode results are tracked separately from the standard operation scores.',
+                  'After at least 100 attempts, reaching 90% overall accuracy triggers a confetti celebration.',
                   'Reset Scores clears all correct and incorrect counts after you confirm. Your practice settings are kept.',
                 ],
               ),
